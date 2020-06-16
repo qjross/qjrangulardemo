@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src ="app.js"></script>
+    
+<script src ="MainController.js"></script>
+    <script src="style.css"></script>
+
+    
+    
+</head>
+<body ng-app="teamStandings">
+    
+    <div class="main" ng-controller="MainController">
+        <h1>{{ title }}</h1>
+    <table>
+        <div class="tableTop">
+        <td>School</td><td>Conf. W-L</td><td>Conf. Win %</td><td>Conf. PF</td><td>Conf. PA</td><td>Conf. +/-</td><td>W-L</td><td>Overall Win %</td><td>Overall PF</td><td>Overall PA</td><td>Overall +/-</td>
+    </div>
+  <tr ng-repeat="x in teams | orderBy : '-confWinPct'">
+        
+      <td class="teamName">{{ x.name }}</td>
+    <td class="confRecord">{{ x.confRecord }}</td>
+      <td class="confWinPct">{{ x.confWinPct | number : 3 }}</td>
+    <td class="confPF">{{ x.confPF }}</td>
+      <td class="confPA">{{ x.confPA }}</td>
+    <td class="confPD">{{ x.confPF - x.confPA }}</td>
+      <td class="overallRecord">{{ x.overallRecord }}</td>
+    <td class="overallWinPct">{{ x.overallWinPct | number : 3 }}</td>
+      <td class="overallPF">{{ x.overallPF }}</td>
+    <td class="overallPA">{{ x.overallPA }}</td>
+      <td class="totalPD">{{ x.overallPF - x.overallPA }}</td>
+  </tr>
+</table>
+    </div>
+</body>
+</html>
